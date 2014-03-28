@@ -2,8 +2,8 @@
 require_once '../okw/CF.php';
 require_once '../okw/CFException.php';
 
-$email = 'email';
-$token = 'token';
+$email = '{EMAIL}';
+$token = '{TOKEN}';
 
 
 $cf = new okw\CF($email,$token);
