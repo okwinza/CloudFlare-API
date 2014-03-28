@@ -3,7 +3,7 @@ A small, compact but flexible API library for popular CDN provider [CloudFlare](
 
 Supports both HOST and CLIENT APIs.
 
-[CloudFlare Client API documentation](https://www.cloudflare.com/docs/client-api.html)
+[CloudFlare Client API documentation](https://www.cloudflare.com/docs/client-api.html)   
 [CloudFlare Hosting Provider API documentation](http://www.cloudflare.com/docs/host-api.html)
 
 ## HOW TO ##
@@ -64,7 +64,7 @@ You can install `cloudflare-api` via [Composer](http://getcomposer.org/)
 Or by simple `require`.
 
 ## Support ##
-vk: [okwinza](https://vk.com/okwinza) 
-email: <okwinza@gmail.com>  
+vk: [okwinza](https://vk.com/okwinza)  
+email: <okwinza@gmail.com>
 
  
