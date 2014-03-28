@@ -1,0 +1,28 @@
+{
+    "name": "okwinza/cloudflare-api",
+    "license": "MIT",
+    "description": "Simple yet flexible PHP library for CloudFlare API.",
+    "keywords": ["cloudflare", "api", "rest", "php"],
+    "homepage": "https://github.com/okwinza/cloudflare-api",
+    "authors": [
+        {
+            "name": "Oleg Krasavin",
+            "email": "okwinza@gmail.com",
+            "homepage": "http://okwinza.ru"
+        }
+    ],
+    "support": {
+        "email": "okwinza@gmail.com",
+        "issues": "https://github.com/okwinza/cloudflare-api/issues",
+        "source": "https://github.com/okwinza/cloudflare-api"
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "okw\\": ""
+        }
+    }
+}
