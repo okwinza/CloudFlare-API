@@ -1,4 +1,4 @@
-<?
+<?php
 require_once '../okw/CF.php';
 require_once '../okw/CFException.php';
 
