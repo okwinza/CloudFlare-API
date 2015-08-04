@@ -1,5 +1,8 @@
 # CloudFlare API #
-
+[![Latest Stable Version](https://poser.pugx.org/okwinza/cloudflare-api/v/stable)](https://packagist.org/packages/okwinza/cloudflare-api) 
+[![Total Downloads](https://poser.pugx.org/okwinza/cloudflare-api/downloads)](https://packagist.org/packages/okwinza/cloudflare-api) 
+[![Latest Unstable Version](https://poser.pugx.org/okwinza/cloudflare-api/v/unstable)](https://packagist.org/packages/okwinza/cloudflare-api) 
+[![License](https://poser.pugx.org/okwinza/cloudflare-api/license)](https://packagist.org/packages/okwinza/cloudflare-api)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/okwinza/cloudflare-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/okwinza/cloudflare-api/?branch=master)
 
 A small, compact but flexible API library for popular CDN provider [CloudFlare](http://cloudflare.com) written in PHP.
