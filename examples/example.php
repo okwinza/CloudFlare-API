@@ -14,7 +14,7 @@ $token = '{TOKEN}';
 $zoneName = 'yoursite.com';
 $hostName = 'new.yoursite.com';
 
-$cf = new okw\CF\CF($email,$token);
+$cf = new okw\CF\CF($email, $token);
 
 try {
 
@@ -31,7 +31,7 @@ try {
     echo "<pre>" . print_r($response, 1) . "</pre>";
 
 
-}catch(okw\CF\Exception\CFException $e){
+}catch (okw\CF\Exception\CFException $e) {
     echo 'Error: ' . $e->getMessage();
 }
 
