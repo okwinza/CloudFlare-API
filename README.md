@@ -1,4 +1,7 @@
 # CloudFlare API #
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/okwinza/cloudflare-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/okwinza/cloudflare-api/?branch=master)
+
 A small, compact but flexible API library for popular CDN provider [CloudFlare](http://cloudflare.com) written in PHP.
 
 Supports both HOST and CLIENT APIs.
