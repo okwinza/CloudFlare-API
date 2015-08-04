@@ -1,5 +1,9 @@
 <?php
-namespace okw;
+
+namespace okw\CF;
+
+use okw\CF\Exception\CFException;
+
 /**
 * CloudFlare API Library
 * @link http://github.com/okwinza/cloudflare-api
@@ -61,7 +65,7 @@ class CF {
      *
      */
     public function post($method,$params = array()){
-        return $this->executeRequest($this->buildRequestParams($method,$params), "POST");
+        return $this->executeRequest($this->buildRequestParams($method,$params));
     }
 
     /**
@@ -128,33 +132,21 @@ class CF {
     /**
      *
      * @param array $parameters
-     * @param string $http_method
      * @return mixed
      * @throws CFException
      */
-    private function executeRequest($parameters = array(), $http_method = 'POST'){
+    private function executeRequest($parameters = array()){
         $curl_options = array(
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_SSL_VERIFYHOST => 2,
-            CURLOPT_CUSTOMREQUEST  => $http_method,
+            CURLOPT_CUSTOMREQUEST  => 'POST',
             CURLOPT_CONNECTTIMEOUT => $this->curlTimeout,
             CURLOPT_TIMEOUT        => $this->curlConnectTimeout
         );
 
-        switch ($http_method) {
-            case 'POST':
-                $curl_options[CURLOPT_POST] = true;
-                $curl_options[CURLOPT_POSTFIELDS] = $parameters;
-                break;
-            default:
-                if (is_array($parameters)) {
-                    $url .= '?' . http_build_query($parameters, null, '&');
-                } elseif ($parameters) {
-                    $url .= '?' . $parameters;
-                }
-                break;
-        }
+        $curl_options[CURLOPT_POST] = true;
+        $curl_options[CURLOPT_POSTFIELDS] = $parameters;
 
         $curl_options[CURLOPT_URL] = $this->apiUrl[$this->mode];
 
@@ -163,7 +155,6 @@ class CF {
 
         $result = curl_exec($ch);
         $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $content_type = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
 
         if ($curl_error = curl_error($ch)) {
             throw new CFException($curl_error, CFException::CURL_ERROR);
