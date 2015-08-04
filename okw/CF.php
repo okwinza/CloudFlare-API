@@ -174,5 +174,3 @@ class CF {
         return $json_decode;
     }
 }
-
-?>
