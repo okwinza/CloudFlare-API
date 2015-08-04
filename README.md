@@ -9,6 +9,8 @@ A small, compact but flexible API library for popular CDN provider [CloudFlare](
 
 Supports both HOST and CLIENT APIs.
 
+## Docs ##
+
 [CloudFlare Client API documentation](https://www.cloudflare.com/docs/client-api.html)   
 [CloudFlare Hosting Provider API documentation](http://www.cloudflare.com/docs/host-api.html)
 
@@ -39,7 +41,7 @@ $cf_api_client = new CF("{HOST_KEY}");
 And start making requests:
 
 ```
-    $response = $cf->rec_new(array(
+    $response = $cf_api_client->rec_new(array(
         'z' => 'yoursite.com',
         'name' => 'new.yoursite.com',
         'ttl' => 1,
@@ -48,6 +50,8 @@ And start making requests:
     ));
 
 ```
+
+Note: `rec_new` is a name of api method listed in [docs](https://github.com/okwinza/CloudFlare-API#docs)
 
 Also, you can change your current EMAIL/TOKEN/HOST_KEY values at any time without re-creating the object:
 
