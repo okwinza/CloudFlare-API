@@ -16,13 +16,13 @@ class CF {
     protected $host_key;
     protected $mode = 'client';
     protected $apiUrl = array('client' => 'https://www.cloudflare.com/api_json.html',
-                              'host'   => 'https://api.cloudflare.com/host-gw.html');
+                                'host'   => 'https://api.cloudflare.com/host-gw.html');
 
     protected $curlTimeout = 30;
     protected $curlConnectTimeout = 30;
 
 
-    public function __construct(){
+    public function __construct() {
 
 
         if (!extension_loaded('curl')) {
@@ -32,26 +32,26 @@ class CF {
         $args = func_get_args();
         switch (func_num_args()) {
             case 1:
-                $this->mode  = 'host';
-                $this->host_key  = $args[0];
+                $this->mode = 'host';
+                $this->host_key = $args[0];
                 break;
             case 2:
-                $this->mode  = 'client';
+                $this->mode = 'client';
                 $this->email     = $args[0];
                 $this->token     = $args[1];
                 break;
         }
     }
 
-     /**
-      * Magic method for calling API methods
-      * @param string $method
-      * @param array  $arguments
-      *
-      * @return array
-      *
-      */
-    function __call($method, $arguments){
+        /**
+         * Magic method for calling API methods
+         * @param string $method
+         * @param array  $arguments
+         *
+         * @return array
+         *
+         */
+    public function __call($method, $arguments){
         $params = (is_array($arguments[0]) ? $arguments[0] : array());
         return $this->post($method,$params);
     }
@@ -64,42 +64,42 @@ class CF {
      * @return array
      *
      */
-    public function post($method,$params = array()){
-        return $this->executeRequest($this->buildRequestParams($method,$params));
+    public function post($method, $params = array()) {
+        return $this->executeRequest($this->buildRequestParams($method, $params));
     }
 
     /**
      * @param $timeout
      */
-    public function setRequestTimeout($timeout){
+    public function setRequestTimeout($timeout) {
         $this->curlTimeout = $timeout;
     }
 
     /**
      * @param $timeout
      */
-    public function setConnectTimeout($timeout){
+    public function setConnectTimeout($timeout) {
         $this->curlConnectTimeout = $timeout;
     }
 
     /**
      * @param $email
      */
-    public function setEmail($email){
+    public function setEmail($email) {
         $this->email = $email;
     }
 
     /**
      * @param $token
      */
-    public function setToken($token){
+    public function setToken($token) {
         $this->token = $token;
     }
 
     /**
      * @param $host_key
      */
-    public function setHostKey($host_key){
+    public function setHostKey($host_key) {
         $this->host_key = $host_key;
     }
 
@@ -111,9 +111,9 @@ class CF {
  *
  * @return array
  * */
-    private function buildRequestParams($method,$parameters = array()){
+    private function buildRequestParams($method, $parameters = array()) {
 
-        switch($this->mode){
+        switch ($this->mode) {
             case 'client':
                 $parameters['email'] = $this->email;
                 $parameters['tkn']   = $this->token;
@@ -135,7 +135,7 @@ class CF {
      * @return mixed
      * @throws CFException
      */
-    private function executeRequest($parameters = array()){
+    private function executeRequest($parameters = array()) {
         $curl_options = array(
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_SSL_VERIFYPEER => false,
@@ -164,12 +164,15 @@ class CF {
         curl_close($ch);
 
         // Handling API errors
-        if ((is_array($json_decode) && !empty($json_decode['err_code'])) || $json_decode['result'] == 'error')
-            throw new CFException($json_decode['msg']);
-        if ($http_code !== 200)
-            throw new CFException('HTTP Non-200 response', $http_code);
-        if (json_last_error() !== \JSON_ERROR_NONE)
-            throw new CFException('JSON decoding error', json_last_error());
+        if ((is_array($json_decode) && !empty($json_decode['err_code'])) || $json_decode['result'] == 'error') {
+                    throw new CFException($json_decode['msg']);
+        }
+        if ($http_code !== 200) {
+                    throw new CFException('HTTP Non-200 response', $http_code);
+        }
+        if (json_last_error() !== \JSON_ERROR_NONE) {
+                    throw new CFException('JSON decoding error', json_last_error());
+        }
 
         return $json_decode;
     }
