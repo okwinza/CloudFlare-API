@@ -13,29 +13,29 @@ Supports both HOST and CLIENT APIs.
 * Start coding.
 
 ## Example ##
-You can find some demo code in /examples dir. It will show you how to handle this piece of free software.
+You can find some demo code in /examples dir.
 
-But still, here is the basics:
+But still, here are the basics:
 
 If you want to use CLIENT API then instantiate API object like this:
 
 ```
-$cf = new okw\CF("{EMAIL}","{TOKEN}");
+$cf_api_client = new CF("{EMAIL}","{TOKEN}");
 
 ```
 
-Oterwise just pass your {HOST_KEY} into constructor:
+Otherwise just pass your {HOST_KEY} to the constructor:
 
 ```
-$cf = new okw\CF("{HOST_KEY}");
+$cf_api_client = new CF("{HOST_KEY}");
 
 ```
 And start making requests:
 
 ```
     $response = $cf->rec_new(array(
-        'z' => 'okwinza.ru',
-        'name' => 'new.okwinza.ru',
+        'z' => 'yoursite.com',
+        'name' => 'new.yoursite.com',
         'ttl' => 1,
         'type' => 'A',
         'content' => '1.2.3.4'
@@ -43,22 +43,21 @@ And start making requests:
 
 ```
 
-Also, you can always change current EMAIL/TOKEN/HOST_KEY values:
-```
-$cf->setEmail($email);
-$cf->setToken($token);
-$cf->setHostKey($host_key);
+Also, you can change your current EMAIL/TOKEN/HOST_KEY values at any time without re-creating the object:
 
 ```
-So there is no need to re-instantiate the object.
+$cf_api_client->setEmail($email);
+$cf_api_client->setToken($token);
+$cf_api_client->setHostKey($host_key);
+
+```
 
 
 ## Installation ##
-You can install `cloudflare-api` via [Composer](http://getcomposer.org/)
+You can install `cloudflare-api` via [Composer](http://getcomposer.org/):
+
 ```
-"require": {
-    "okwinza/cloudflare-api": "dev-master"
-}
+composer require okwinza/cloudflare-api
 ```
   
 Or by simple `require`.
