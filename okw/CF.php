@@ -51,9 +51,9 @@ class CF {
          * @return array
          *
          */
-    public function __call($method, $arguments){
+    public function __call($method, $arguments) {
         $params = (is_array($arguments[0]) ? $arguments[0] : array());
-        return $this->post($method,$params);
+        return $this->post($method, $params);
     }
 
     /**
