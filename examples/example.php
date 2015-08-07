@@ -1,6 +1,6 @@
 <?php
-require_once '../okw/CF.php';
-require_once '../okw/CFException.php';
+require_once '../okw/CF/CF.php';
+require_once '../okw/CF/CFException.php';
 
 
 /**
@@ -26,13 +26,8 @@ try {
         'content' => '1.2.3.4'
     ));
 
-
-
-    echo "<pre>" . print_r($response, 1) . "</pre>";
-
-
 }catch (okw\CF\Exception\CFException $e) {
-    echo 'Error: ' . $e->getMessage();
+    echo 'Error: ' . $e->getMessage() . PHP_EOL;
 }
 
 

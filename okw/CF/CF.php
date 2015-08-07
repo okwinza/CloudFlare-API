@@ -2,7 +2,10 @@
 
 namespace okw\CF;
 
+use okw\CF\Exception\BadResponseException;
 use okw\CF\Exception\CFException;
+use okw\CF\Exception\DecodeException;
+use okw\CF\Exception\HttpException;
 
 /**
 * CloudFlare API Library
@@ -131,7 +134,11 @@ class CF {
     /**
      * @param array $parameters
      * @return mixed
+     *
      * @throws CFException
+     * @throws \HttpException
+     * @throws DecodeException
+     * @throws BadResponseException
      *
      * @return array
      */
@@ -164,13 +171,13 @@ class CF {
 
         // Handling API errors
         if ((is_array($json_decode) && !empty($json_decode['err_code'])) || $json_decode['result'] == 'error') {
-            throw new CFException($json_decode['msg']);
+            throw new BadResponseException($json_decode['msg']);
         }
         if ($http_code !== 200) {
-            throw new CFException('HTTP Non-200 response', $http_code);
+            throw new \HttpResponseException('HTTP Non-200 response', $http_code);
         }
         if (json_last_error() !== \JSON_ERROR_NONE) {
-            throw new CFException('JSON decoding error', json_last_error());
+            throw new DecodeException('JSON decoding error', json_last_error());
         }
 
         return $json_decode;

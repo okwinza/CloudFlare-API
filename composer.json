@@ -18,7 +18,8 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "phpunit/phpunit": "^4.8"
     },
     "autoload": {
         "psr-0": {
