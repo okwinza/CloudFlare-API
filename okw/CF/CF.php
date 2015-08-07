@@ -16,7 +16,7 @@ class CF {
     protected $host_key;
     protected $mode = 'client';
     protected $apiUrl = array('client' => 'https://www.cloudflare.com/api_json.html',
-                                'host'   => 'https://api.cloudflare.com/host-gw.html');
+                                'host' => 'https://api.cloudflare.com/host-gw.html');
 
     protected $curlTimeout = 30;
     protected $curlConnectTimeout = 30;
